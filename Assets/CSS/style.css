@@ -1,0 +1,38 @@
+h1 {
+    
+    text-align: center;
+    border: 1px;
+}
+
+
+.addUser {
+    
+    width: 100%;
+    height: 300px;;
+    display: flex;
+    
+}
+.textAddUser {
+    font-size:larger ;
+    text-align: center;
+    border: 5px;
+    border-radius: 5px;
+    
+}
+.formAddUser {
+    
+    border: 5px;
+    border-radius: 5px;
+    background-color: grey;
+}
+.table {
+border: 1px;
+}
+thead {
+    
+    text-align: center;
+    
+}
+th, td {
+    text-align: center;
+}
