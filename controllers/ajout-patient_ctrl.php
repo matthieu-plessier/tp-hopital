@@ -4,6 +4,7 @@ require_once(dirname(__FILE__).'/../models/Patient.php');
 require_once(dirname(__FILE__).'/../utils/regex.php');
 
 $errors = [];
+$message = null;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -80,7 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty($error)){
         $patient = new Patient($lastname, $firstname, $birthdate, $phone, $email);
-        $result = $patient->addPatient();
+        $message  = $patient->addPatient();
         
         }
 

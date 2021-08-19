@@ -1,8 +1,9 @@
 <?php
 
 require_once(dirname(__FILE__).'/../models/Patient.php');
-$class = new Patient();
-$patients = $class->findAll();
+
+
+$patients = Patient::findAll();
 
 
 

@@ -1,10 +1,18 @@
 
 <h1>Ajouter un patient</h1>
-
+<?php 
+        if($message === 2){
+            echo 'Le patient existe déja';
+        }else if($message === true){
+            echo 'Le patient a bien été enregistré';
+        }else if($message === false){
+            echo 'Une erreur est survenue';
+        }
+        ?>
 <div class="container">
     <div class="row addUser">
         <div class="col-6 textAddUser"> Merci de renseigner tout les champs afin de valider votre saisie.</div>
-
+        
         <div class="col-6 formAddUser">
             <form method="POST">
                 <div class="mb-3">
