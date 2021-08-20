@@ -61,21 +61,28 @@
                 }catch (PDOException $ex){
                     return $ex ; // Une erreur est survenue
                 }
-
-            }else {
-                return 2; //Le patient existe déjà
-            }
+                }else {
+                    return 2; //Le patient existe déjà
+                }
         }
         public static function findAll(){
             // requête sql
             $sql = "SELECT * FROM `patients`";
             // demander à PDO d'exécuter la requête passée en paramètre appel la methode query
             $db = db_connect();
-            $sth = $db->query($sql);
             
             // récupérer les données dans un tableau PHP
-            $result = $sth->fetchAll();
-            return $result;
+            try {
+                $sth = $db->query($sql);
+                if ($sth == true){
+                    $result = $sth->fetchAll();
+                    return $result;
+                }
+                
+            } catch (PDOException $ex) {
+                return $ex;
+            }
+            
             
         }
 

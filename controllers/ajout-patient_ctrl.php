@@ -2,7 +2,7 @@
 
 require_once(dirname(__FILE__).'/../models/Patient.php');
 require_once(dirname(__FILE__).'/../utils/regex.php');
-
+$title = "Ajout de patient";
 $errors = [];
 $message = null;
 

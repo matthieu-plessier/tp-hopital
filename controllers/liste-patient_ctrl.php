@@ -2,8 +2,16 @@
 
 require_once(dirname(__FILE__).'/../models/Patient.php');
 
+$title = "Liste des patients";
+$error = "";
 
 $patients = Patient::findAll();
+if(is_object($patients)){
+    $error = 'wrong';
+}
+
+
+
 
 
 
