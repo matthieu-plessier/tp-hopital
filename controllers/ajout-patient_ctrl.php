@@ -1,10 +1,11 @@
 <?php
 
 require_once(dirname(__FILE__).'/../models/Patient.php');
+require_once(dirname(__FILE__).'/../config/config.php');
 require_once(dirname(__FILE__).'/../utils/regex.php');
 $title = "Ajout de patient";
 $errors = [];
-$message = null;
+$code = null;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -81,7 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty($error)){
         $patient = new Patient($lastname, $firstname, $birthdate, $phone, $email);
-        $message  = $patient->addPatient();
+        $code  = $patient->addPatient();
         
         }
 

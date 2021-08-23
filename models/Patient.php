@@ -57,9 +57,10 @@
                 $req->bindValue(':email', $this->_email, PDO::PARAM_STR);
 
                 try {
-                    return $req->execute(); // Validé, patient enregistré
+                    $req->execute();
+                    return 5;// Validé, patient enregistré
                 }catch (PDOException $ex){
-                    return $ex ; // Une erreur est survenue
+                    return 404; // Une erreur est survenue
                 }
                 }else {
                     return 2; //Le patient existe déjà
@@ -97,16 +98,34 @@
             
             if($req) {
                 // on return les données récupérées
-                return $req->fetch(PDO::FETCH_OBJ);
+                
+                return $req->fetch(PDO::FETCH_OBJ);//existe
             }
         } catch (PDOException $ex) {
-            return false;
+            return 10; // erreur
         }
 
     }
-        
+    public function updade($id)
+    {
+        $sql ="UPDATE  `patients` 
+                SET(`lastname`=:lastname, `firstname`=:firstname, `birthdate`=:birthdate, `phone`=:phone, `mail`=:email)
+                WHERE `id` = :id";
+
+                $req = $this->db->prepare($sql);
+
+                $req->bindValue(':lastname', $this->_lastname, PDO::PARAM_STR);
+                $req->bindValue(':firstname', $this->_firstname, PDO::PARAM_STR);
+                $req->bindValue(':birthdate', $this->_birthdate, PDO::PARAM_STR);
+                $req->bindValue(':phone', $this->_phone, PDO::PARAM_STR);
+                $req->bindValue(':email', $this->_email, PDO::PARAM_STR);
+
+        try {
+            if ($req->execute())
+            // retourne les donnéées récup
+            return $req-> fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $ex) {
+            return false;
+        }
     }
-
-
-
-
+    }

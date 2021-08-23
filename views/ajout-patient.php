@@ -1,12 +1,8 @@
 
 <h1>Ajouter un patient</h1>
 <?php 
-        if($message === 2){
-            echo 'Le patient existe déja';
-        }else if($message === true){
-            echo 'Le patient a bien été enregistré';
-        }else if($message === false){
-            echo 'Une erreur est survenue';
+        if($code){
+            echo '<div class="alert'.' '.$messageCode[$code]['type'].' ">'.$messageCode[$code]['msg'].'</div>';
         }
         ?>
 <div class="container">

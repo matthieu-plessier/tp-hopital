@@ -1,7 +1,15 @@
 <h1>Profil du patient</h1>
 
 <p>Pour modifier les informations du patient, veuillez remplacer les champs suivants puis valider.</p>
-<p><strong>ID:</strong><?= $resultCheckPatient->id?>  <strong> Nom:</strong><?= $resultCheckPatient->lastname?>  <strong> Prénom:</strong><?= $resultCheckPatient->firstname ?></p>
+<?php
+    if ($resultCheckPatient != NULL) { ?>
+        <p><strong>ID:</strong><?= $resultCheckPatient->id?>  <strong> Nom:</strong><?= $resultCheckPatient->lastname?>  <strong> Prénom:</strong><?= $resultCheckPatient->firstname ?></p>
+    <?php } ?>
+
+<?php if (!$code) {
+
+?>
+
 
 <div class="container">
     <div class="row">
@@ -32,3 +40,6 @@
         </div>
     </div>
 </div>
+<?php } else
+        echo '<div class="alert'.' '.$messageCode[$code]['type'].' ">'.$messageCode[$code]['msg'].'</div>';
+?>
