@@ -1,4 +1,5 @@
 <h1>Liste des Patients</h1>
+
 <a class="btn btn-primary" href="/controllers/ajout-patient_ctrl.php" role="button" id="addButton">Ajouter un patient</a>
 <?= $error ?>
 <table class="table ">
@@ -10,6 +11,7 @@
             <th scope="col">Email</th>
             <th scope="col">téléphone</th>
             <th scope="col">Date de naissance</th>
+            <th scope="col">Profils</th>
         
     </thead>
     <tbody>
@@ -18,16 +20,15 @@
 
             <tr class="table-primary">
                 <td scope="row"><?=$i["id"] ?? '' ?></td>
-                <td><?=$i["lastname"] ?? '' ?></td>
-                <td><?=$i["firstname"]?? '' ?></td>
-                <td><?=$i["mail"]?? '' ?></td>
-                <td><?=$i["phone"]?? '' ?></td>
-                <td><?=$i["birthdate"]?? '' ?></td>
+                <td><?=($i)["lastname"] ?? '' ?></td>
+                <td><?=($i)["firstname"]?? '' ?></td>
+                <td><?=($i)["mail"]?? '' ?></td>
+                <td><?=($i)["phone"]?? '' ?></td>
+                <td><?=($i)["birthdate"]?? '' ?></td>
+                <td><a class="btn btn-primary" href="/controllers/profil-patient_ctrl.php?id=<?=($i)["id"]?>">Voir Profil</button></td>
             </tr>
 
         <?php endforeach; ?>
 
     </tbody>
 </table>
-
-    

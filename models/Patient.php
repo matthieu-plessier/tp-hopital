@@ -85,12 +85,27 @@
             
             
         }
+             // méthode pour voir le profil d'un patient
+    public static function checkPatient($id)
+    {
+        $sql = "SELECT * FROM `patients` WHERE `id` = :id";
+        $req = db_connect()->prepare($sql);
+        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        $req->execute();
+    
+        try {
+            
+            if($req) {
+                // on return les données récupérées
+                return $req->fetch(PDO::FETCH_OBJ);
+            }
+        } catch (PDOException $ex) {
+            return false;
+        }
 
+    }
         
     }
-
-                
-
 
 
 

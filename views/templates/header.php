@@ -27,9 +27,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/controllers/liste-patient_ctrl.php">Liste des patients</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/controllers/profil-patient_ctrl.php">Profil du patient</a>
-                    </li>
+                    
                 </ul>
                 <span class="navbar-text">
                     Centre de traitement des gueules de bois.
@@ -39,5 +37,5 @@
     </nav>
 
     <div>
-        <img src="/Assets/img/hospital-2354845_640.jpg" alt="image couloir hopital" width="100%" height="300px">
+        <img src="/Assets/img/hospital-2354845_640.jpg" alt="image couloir hopital" width="100%" height="200px">
     </div>

@@ -3,7 +3,9 @@ h1 {
     text-align: center;
     border: 1px;
 }
-
+html {
+    text-align: center;
+}
 
 .addUser {
     
