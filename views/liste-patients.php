@@ -19,13 +19,13 @@
         <?php foreach($patients as $i) : ?>
 
             <tr class="table-primary">
-                <td scope="row"><?=$i["id"] ?? '' ?></td>
-                <td><?=($i)["lastname"] ?? '' ?></td>
-                <td><?=($i)["firstname"]?? '' ?></td>
-                <td><?=($i)["mail"]?? '' ?></td>
-                <td><?=($i)["phone"]?? '' ?></td>
-                <td><?=($i)["birthdate"]?? '' ?></td>
-                <td><a class="btn btn-primary" href="/controllers/profil-patient_ctrl.php?id=<?=($i)["id"]?>">Voir Profil</button></td>
+                <td scope="row"><?=$i->id ?? '' ?></td>
+                <td><?=$i->lastname ?? '' ?></td>
+                <td><?=$i->firstname ?? '' ?></td>
+                <td><?=$i->mail ?? '' ?></td>
+                <td><?=$i->phone ?? '' ?></td>
+                <td><?=$i->birthdate ?? '' ?></td>
+                <td><a class="btn btn-primary" href="/controllers/profil-patient_ctrl.php?id=<?=$i->id ?>">Voir Profil</button></td>
             </tr>
 
         <?php endforeach; ?>

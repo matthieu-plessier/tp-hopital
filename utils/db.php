@@ -1,15 +1,24 @@
 <?php
 
-function db_connect()
-{
-    $dsn = 'mysql:host=localhost;dbname=hopital;charset=utf8';
-    $user = 'root';
-    $password = '';
-    $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
-    try {
-        $pdo = new PDO($dsn, $user, $password, $options);
-        return $pdo;
-    } catch(PDOException $ex) {
-        die('erreur de connexion à la bdd');
+class Database{
+
+    private static $_pdo;
+
+    public static function getInstance()
+    {
+        try {
+            if(is_null(self::$_pdo)){
+                self::$_pdo = new PDO(DSN,LOGIN, PASSWORD);
+                self::$_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                self::$_pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+
+            }
+            return self::$_pdo;
+        } catch (PDOException $ex) {
+            echo sprintf('Probleme de connexion avec l\'erreur', $ex->getMessage());
+
+        }
     }
+    
 }
+

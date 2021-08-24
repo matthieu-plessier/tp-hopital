@@ -1,4 +1,5 @@
 <?php
+    require_once(dirname(__FILE__).'/../config/config.php');
     require_once(dirname(__FILE__).'/../utils/db.php');
     class Patient {
         
@@ -20,16 +21,16 @@
         $this->_birthdate=$birthdate;
         $this->_phone=$phone;
         $this->_email=$email;
-        $this->db = db_connect();
+        $this->db = Database::getInstance();
         }
         // verifie que le mail existe 
         public static function checkDuplicate($mail){
             $checkMailSql ="SELECT `mail`
                             FROM `patients` 
                             WHERE `mail`= :mail ";
-            $db = db_connect();
+            
 
-            $stmtCheckMailReq = $db->prepare($checkMailSql);
+            $stmtCheckMailReq = Database::getInstance()->prepare($checkMailSql);
             
             $stmtCheckMailReq->bindValue(':mail',$mail,PDO::PARAM_STR);
             try {
@@ -70,11 +71,11 @@
             // requête sql
             $sql = "SELECT * FROM `patients`";
             // demander à PDO d'exécuter la requête passée en paramètre appel la methode query
-            $db = db_connect();
+            
             
             // récupérer les données dans un tableau PHP
             try {
-                $sth = $db->query($sql);
+                $sth =  Database::getInstance()->query($sql);
                 if ($sth == true){
                     $result = $sth->fetchAll();
                     return $result;
@@ -90,7 +91,7 @@
     public static function checkPatient($id)
     {
         $sql = "SELECT * FROM `patients` WHERE `id` = :id";
-        $req = db_connect()->prepare($sql);
+        $req =  Database::getInstance()->prepare($sql);
         $req->bindValue(':id', $id, PDO::PARAM_INT);
         $req->execute();
     
@@ -106,7 +107,7 @@
         }
 
     }
-    public function updade($id)
+    public function update()
     {
         $sql ="UPDATE  `patients` 
                 SET(`lastname`=:lastname, `firstname`=:firstname, `birthdate`=:birthdate, `phone`=:phone, `mail`=:email)
