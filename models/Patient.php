@@ -107,10 +107,10 @@
         }
 
     }
-    public function update()
+    public function update($id)
     {
         $sql ="UPDATE  `patients` 
-                SET(`lastname`=:lastname, `firstname`=:firstname, `birthdate`=:birthdate, `phone`=:phone, `mail`=:email)
+                SET `lastname`= :lastname, `firstname`= :firstname, `birthdate`= :birthdate, `phone`= :phone, `mail`= :email
                 WHERE `id` = :id";
 
                 $req = $this->db->prepare($sql);
@@ -120,11 +120,13 @@
                 $req->bindValue(':birthdate', $this->_birthdate, PDO::PARAM_STR);
                 $req->bindValue(':phone', $this->_phone, PDO::PARAM_STR);
                 $req->bindValue(':email', $this->_email, PDO::PARAM_STR);
+                $req->bindValue(':id', $id, PDO::PARAM_STR);
+
 
         try {
             if ($req->execute())
             // retourne les donnéées récup
-            return $req-> fetch(PDO::FETCH_OBJ);
+            return 3;
         } catch (PDOException $ex) {
             return false;
         }
