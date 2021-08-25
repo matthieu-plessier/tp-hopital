@@ -27,7 +27,7 @@
         public static function checkDuplicate($mail){
             $checkMailSql ="SELECT `mail`
                             FROM `patients` 
-                            WHERE `mail`= :mail ";
+                            WHERE `mail`= :mail;";
             
 
             $stmtCheckMailReq = Database::getInstance()->prepare($checkMailSql);
@@ -90,7 +90,7 @@
              // méthode pour voir le profil d'un patient
     public static function checkPatient($id)
     {
-        $sql = "SELECT * FROM `patients` WHERE `id` = :id";
+        $sql = "SELECT * FROM `patients` WHERE `id` = :id;";
         $req =  Database::getInstance()->prepare($sql);
         $req->bindValue(':id', $id, PDO::PARAM_INT);
         $req->execute();
@@ -107,11 +107,12 @@
         }
 
     }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public function update($id)
     {
         $sql ="UPDATE  `patients` 
                 SET `lastname`= :lastname, `firstname`= :firstname, `birthdate`= :birthdate, `phone`= :phone, `mail`= :email
-                WHERE `id` = :id";
+                WHERE `id` = :id;";
 
                 $req = $this->db->prepare($sql);
 
