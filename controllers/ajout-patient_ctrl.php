@@ -4,7 +4,7 @@ require_once(dirname(__FILE__).'/../models/Patient.php');
 require_once(dirname(__FILE__).'/../config/config.php');
 require_once(dirname(__FILE__).'/../utils/regex.php');
 $title = "Ajout de patient";
-$errors = [];
+$error = [];
 $code = null;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
     // On vérifie que ce n'est pas vide
     if(!empty($lastname)){
-        $testRegex = preg_match('/'.REGEXP_STR_NO_NUMBER.'/',$lastname);
+        $testRegex = preg_match('/'.REGEX_STR_NO_NUMBER.'/',$lastname);
         // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
         if(!$testRegex){
             $error["lastname"] = "Le nom n'est pas au bon format !!"; 
@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $firstname = trim(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
 
     if(!empty($firstname)){
-        $testRegex = preg_match('/'.REGEXP_STR_NO_NUMBER.'/',$firstname);
+        $testRegex = preg_match('/'.REGEX_STR_NO_NUMBER.'/',$firstname);
         if(!$testRegex){
             $error["firstname"] = "Le prénom n'est pas au bon format !!"; 
         } else {
@@ -59,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $phone = str_replace(["-"], [], $phone);
 
     if(!empty($phone)){
-        $testRegex = preg_match('/'.REGEXP_PHONE_NUMBER.'/',$phone);
+        $testRegex = preg_match('/'.REGEX_PHONE_NUMBER.'/',$phone);
         if(!$testRegex){
             $error["phone"] = "Vous devez entrer un numéro de téléphone valide"; 
         }

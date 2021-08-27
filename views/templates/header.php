@@ -28,7 +28,10 @@
                         <a class="nav-link" href="/controllers/liste-patient_ctrl.php">Liste des patients</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/controllers/ajout-rendezvous_ctrl.php">Rendez-vous</a>
+                        <a class="nav-link" href="/controllers/ajout-rendezvous_ctrl.php">Ajout rendez-vous</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/controllers/liste-rendezvous_ctrl.php">Liste rendez-vous</a>
                     </li>
                     
                 </ul>

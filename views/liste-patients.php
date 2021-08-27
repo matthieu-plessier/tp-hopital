@@ -18,16 +18,16 @@
     </thead>
     <tbody>
         
-        <?php foreach($patients as $i) : ?>
+        <?php foreach($patients as $patient) : ?>
 
             <tr class="table-primary">
-                <td scope="row"><?=$i->id ?? '' ?></td>
-                <td><?=$i->lastname ?? '' ?></td>
-                <td><?=$i->firstname ?? '' ?></td>
-                <td><?=$i->mail ?? '' ?></td>
-                <td><?=$i->phone ?? '' ?></td>
-                <td><?=$i->birthdate ?? '' ?></td>
-                <td><a class="btn btn-primary" href="/controllers/profil-patient_ctrl.php?id=<?=$i->id ?>">Voir Profil</button></td>
+                <td scope="row"><?=$patient->id ?? '' ?></td>
+                <td><?=$patient->lastname ?? '' ?></td>
+                <td><?=$patient->firstname ?? '' ?></td>
+                <td><a href="mailto:<?=$patient->mail ?? '' ?>"><?=$patient->mail ?? '' ?></a></td>
+                <td><a href="tel:<?=$patient->phone ?? '' ?>"><?=$patient->phone ?? '' ?></a></td>
+                <td><?=$patient->birthdate ?? '' ?></td>
+                <td><a class="btn btn-primary" href="/controllers/profil-patient_ctrl.php?id=<?=$patient->id ?>">Voir Profil</button></td>
                 <td></td>
             </tr>
 

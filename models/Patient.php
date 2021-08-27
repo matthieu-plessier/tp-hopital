@@ -126,7 +126,7 @@
 
         try {
             if ($req->execute())
-            // retourne les donnéées récup
+            // retourne les données récup
             return 3;
         } catch (PDOException $ex) {
             return false;

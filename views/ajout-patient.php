@@ -24,7 +24,7 @@
                             minlength="2"
                             maxlength="70"
                             require
-                            pattern="<?=REGEXP_STR_NO_NUMBER?>"
+                            pattern="<?=REGEX_STR_NO_NUMBER?>"
                     >
                     <div class="error"><?=$error['lastname'] ?? ''?></div>
 
@@ -40,7 +40,7 @@
                             autocomplete="given-name"
                             minlength="2"
                             maxlength="70"
-                            pattern="<?=REGEXP_STR_NO_NUMBER?>"
+                            pattern="<?=REGEX_STR_NO_NUMBER?>"
                     >
 
                     <div class="error"><?=$error['firstname'] ?? ''?></div>
@@ -56,7 +56,7 @@
                             class="form-control  <?=isset($error['email']) ? 'errorField' : ''?>" 
                             id="email" 
                             autocomplete="email"
-                            pattern="<?=REGEXP_EMAIL?>"
+                            pattern="<?=REGEX_EMAIL?>"
                             placeholder="name@example.com"
                     >
                     <div class="error"><?=$error['email'] ?? ''?></div>
@@ -72,7 +72,7 @@
                             class="form-control  <?=isset($error['phone']) ? 'errorField' : ''?>" 
                             id="phone" 
                             autocomplete="tel"
-                            pattern="<?=REGEXP_PHONE_NUMBER?>"
+                            pattern="<?=REGEX_PHONE_NUMBER?>"
                             placeholder="Votre numero de téléphone">
                     <div class="error"><?=$error['email'] ?? ''?></div>
                     
