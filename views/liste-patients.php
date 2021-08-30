@@ -13,7 +13,7 @@
             <th scope="col">téléphone</th>
             <th scope="col">Date de naissance</th>
             <th scope="col">Profils</th>
-            <th scope="col">Rendez-vous</th>
+            
         
     </thead>
     <tbody>

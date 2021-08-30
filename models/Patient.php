@@ -108,7 +108,7 @@
 
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public function update($id)
+    public function upDate($id)
     {
         $sql ="UPDATE  `patients` 
                 SET `lastname`= :lastname, `firstname`= :firstname, `birthdate`= :birthdate, `phone`= :phone, `mail`= :email

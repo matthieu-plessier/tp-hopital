@@ -27,17 +27,11 @@
                 class="from-control" name="date" 
                 value="<?=htmlentities($date ?? '') ?>" 
                 aria-label="date">
-
-            <label for="time">Heure</label>
-            <input type="time" 
-                min="08:00" 
-                max="18:00" 
-                step="300" 
-                class="from-control" 
-                name="hour" 
-                value="<?=htmlentities($hour ?? '') ?>" 
-                aria-label="hour">
         </div>
+        <div class="col mb-3">
+            <label for="time">Heure</label>
+            <?= ShowTimeSelect() ?>
+            </div>
     </div>
     
     <div class="row">

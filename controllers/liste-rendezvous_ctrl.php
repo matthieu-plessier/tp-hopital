@@ -3,16 +3,18 @@
 require_once(dirname(__FILE__).'/../models/Appointment.php');
 
 $title = "Liste des Rendez-vous";
-$error = "";
+$error = '';
+
 
 $appointments = Appointment::findAllAppointment();
-if (is_array($appointments)) {
-    //Pour avoir date dans le bon sens
 
+if (is_array($appointments)) {
+
+    //Pour avoir date dans le bon sens
     foreach($appointments as $patient):
         $birth = $patient->dateHour;
         $timeStamp = strtotime($birth);
-        $newDate = date("d-m-Y",$timeStamp);
+        $newDate = date("d-m-Y".' '."H:i",$timeStamp);
         $patient->dateHour = $newDate;
     endforeach;
     

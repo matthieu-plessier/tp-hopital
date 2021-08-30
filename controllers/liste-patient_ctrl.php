@@ -10,6 +10,7 @@ $error = "";
 
 
 $patients = Patient::findAll();
+
 if (is_array($patients)) {
     //Pour avoir date dans le bon sens
 

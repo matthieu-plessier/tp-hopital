@@ -9,7 +9,47 @@ $title = "Ajout de rendez-vous";
 $codeArray = [];
 $code = null;
 
+function ShowTimeSelect()
+{
+    $hours = [];
+    $minutes = [];
 
+    for ($i=8; $i <= 20; $i++) { //Heures
+        if($i < 10){
+            $zero = "0".$i;
+            array_push($hours, $zero);
+        }else{
+            array_push($hours, $i);
+        }
+    }
+    for ($i=0; $i < 60; $i+=10) { //Minutes
+        if($i < 10){
+        $zero = "0".$i;
+        array_push($minutes, $zero);
+        }else{
+        array_push($minutes, $i);
+        }
+    }
+
+        //SHOW MINUTES
+        echo "<div id='time' class='text-center'>";
+        echo "<select name='hours'>";
+            echo "<option>Heure</option>";
+            foreach ($hours as $key => $value) {
+                echo "<option value='$value'>$value</option>";
+            }
+        echo "</select>";
+
+        echo " : ";
+        //SHOW HOURS
+        echo "<select name='minutes'>";
+            echo "<option>Minute</option>";
+            foreach ($minutes as $key => $value) {
+                echo "<option value='$value'>$value</option>";
+            }
+        echo "</select>";
+    echo "</div>";
+}
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $idPatients = trim(filter_input(INPUT_POST, 'idPatients', FILTER_SANITIZE_NUMBER_INT));
@@ -37,10 +77,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     // heure: nettoyage et validation
-    $hour = trim(filter_input(INPUT_POST,'hour',FILTER_SANITIZE_STRING));
+    $hour = filter_input(INPUT_POST,'hours', FILTER_SANITIZE_NUMBER_INT);
+    $minute = filter_input(INPUT_POST,'minutes', FILTER_SANITIZE_NUMBER_INT);
+    $time = $hour.':'.$minute;
 
-    if(!empty($hour)){
-        $testRegex = preg_match('/'.REGEX_HOUR.'/',$hour);
+    if(!empty($time)){
+        $testRegex = preg_match('/'.REGEX_HOUR.'/',$time);
         if(!$testRegex){
             $error ['hour']= 'L\'heure n\'est pas au bon format';
         }
@@ -48,7 +90,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $error['hour']= 'Vous devez entrer une heure';
     }
     if (empty($error)){
-        $dateHour = $date.' '.$hour;
+        $dateHour = $date.' '.$time;
         $patient = new Appointment($dateHour, $idPatients);
         //appel de la méthode creation du rendez-vous en base
         $code = $patient->addAppointment();
