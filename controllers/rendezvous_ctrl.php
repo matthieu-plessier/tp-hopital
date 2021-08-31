@@ -79,6 +79,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 $appoint = new Appointment();
 $result = $appoint->checkAppointment($id);
+if ($result == false) {
+    header('Location: /controllers/liste-rendezvous_ctrl.php'); // redirection sur le page ('')
+    exit;
+}
 
 $arrayDateHour = explode(" ", $result->dateHour);
 $timeArray = explode(":", $arrayDateHour[1]);

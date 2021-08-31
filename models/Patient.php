@@ -70,7 +70,7 @@
         public static function findAll(){
             // requête sql
             $sql = "SELECT * FROM `patients`";
-            // demander à PDO d'exécuter la requête passée en paramètre appel la methode query
+            
             
             
             // récupérer les données dans un tableau PHP

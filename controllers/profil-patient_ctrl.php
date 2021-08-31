@@ -1,5 +1,6 @@
 <?php
 require_once(dirname(__FILE__).'/../models/Patient.php');
+require_once(dirname(__FILE__).'/../models/Appointment.php');
 require_once(dirname(__FILE__).'/../config/config.php');
 require_once(dirname(__FILE__).'/../utils/regex.php');
 $title = 'Profil du patient';
@@ -91,8 +92,28 @@ $resultCheckPatient = Patient::checkPatient($id);
 
 if (!$resultCheckPatient) {
     $code = 10;
-}
 
+
+/////////////////////////////////////////////////////////// LISTE DES RDV /////////////////////////////////////////////////////////////////////////////
+
+
+}
+$appoint = new Appointment();
+$appointments = $appoint->userAppointments($id);
+
+if (is_array($appointments)) {
+
+/////// Pour avoir date dans le bon sens /////////
+    foreach($appointments as $rdv):
+        $birth = $rdv->dateHour;
+        $timeStamp = strtotime($birth);
+        $newDate = date("d-m-Y".' '."H:i",$timeStamp);
+        $rdv->dateHour = $newDate;
+    endforeach;
+    
+}else{
+    $error = "wrong";
+}
 // Affichage des vues 
 include(dirname(__FILE__).'/../views/templates/header.php');
 

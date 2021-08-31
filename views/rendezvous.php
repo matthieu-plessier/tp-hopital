@@ -23,6 +23,8 @@
                     value="<?=htmlentities($arrayDateHour[0] ?? '') ?>" 
                     aria-label="date">
             </div>
+        </div>
+        <div class="row">
             <div class="col">
                 <label for="time">Heure</label>
                 <?= ShowTimeSelect($timeArray) ?>
@@ -31,10 +33,10 @@
             <div class="col m-3">
                 <button class="btn btn-primary" type="submit">Valider les modifications</button>
             </div>
-        </div>
         
     </form>
 </div>
+
 <?php } else
         echo '<div class="alert'.' '.$messageCode[$code]['type'].' ">'.$messageCode[$code]['msg'].'</div>';
 ?>

@@ -8,7 +8,7 @@
         private $_idPatients;
         private $db;
         
-/////////////////////////////////////////////////AJOUT RDV///////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////// AJOUT RDV///////////////////////////////////////////////////////////////////////////////////////
     
 // méthode magique pour "hydrater"
     public function __construct($dateHour = "", $idPatients = "")
@@ -43,7 +43,7 @@
         }
 
     }
-///////////////////////////////////////////////////LISTE DES RDV////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////// LISTE DES RDV ////////////////////////////////////////////////////////////////////////////////
 
 public static function findAllAppointment(){
     // requête sql
@@ -70,7 +70,7 @@ public static function findAllAppointment(){
     
     
 }
-/////////////////////////////////////////////////////LISTE & MODIF DES RDV/////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////// LISTE & MODIF DES RDV /////////////////////////////////////////////////////////////////////////////////////////////
     
 public function checkAppointment($id){
 
@@ -116,6 +116,52 @@ public function update($id)
         return false;
     }
 }
+///////////////////////////////////////////////////////// LISTE DES RDV PAR PATIENTS //////////////////////////////////////////////////////////////////////////////
+
+public function userAppointments($id){
+
+    $sql ="SELECT `appointments`.`id`, `appointments`. `idPatients`, `appointments`. `dateHour`
+    FROM `patients`
+    INNER JOIN `appointments` 
+    ON `patients`.id = `appointments`.idPatients
+    WHERE `appointments`.`idPatients`= :id;";
+
+    $req = $this->db->prepare($sql);
+
+    $req->bindValue(':id', $id, PDO::PARAM_STR);
+
+    try {
+        
+        if ($req->execute()){
+            $result = $req->fetchAll();
+            return $result;
+        }
+        
+    } catch (PDOException $ex) {
+        return $ex;
+    }
+}
+//////////////////////////////////////////////////////////// SUPPRESSION DE RDV //////////////////////////////////////////////////////////////////////////////
+
+public function deleteApointment(){
+
+    $sql ="DELETE INTO `appointments`
+            (`dateHour`, `idPatients`)
+            VALUES
+            (:dateHour, :idPatients)";
+
+    $db = Database::getInstance();
+    $req = $this->db->prepare($sql);
+
+    $req->bindValue(':dateHour', $this->_dateHour, PDO::PARAM_STR);
+    $req->bindValue(':idPatients', $this->_idPatients, PDO::PARAM_STR);
 
 
+    try {
+        $req->execute();
+        return 12; // RDV annulé
+    } catch (PDOException $ex) {
+        return 404; // Une erreur est survenue
+    }
+    }
 }

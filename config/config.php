@@ -8,9 +8,10 @@ $messageCode = [
     6 => ['type' => 'alert-danger', 'msg' => 'l\'id doit être renseigné!!' ],
     10 => ['type' => 'alert-danger', 'msg' => 'Cet utilisateur n\'existe pas'],
     404 => ['type' => 'alert-danger', 'msg' => 'Une erreur SQL est survenue'],
-    11 => ['type' => 'alerte-danger', 'msg' => 'La date entrée n\'est pas valide'],
-    12 => ['type' => 'alerte-success', 'msg' => 'Le rendez-vous est enregistré'],
-    13 => ['type' => 'alerte-seccess', 'msg' => 'La date n\'est pas au bon format'],
+    11 => ['type' => 'alert-danger', 'msg' => 'La date entrée n\'est pas valide'],
+    12 => ['type' => 'alert-success', 'msg' => 'Le rendez-vous est enregistré'],
+    13 => ['type' => 'alert-success', 'msg' => 'La date n\'est pas au bon format'],
+    14 => ['type' => 'alert-success', 'msg' => 'Le rdv est bien supprimé !'],
 ];
 
 // Ici on défini les variables de connection
