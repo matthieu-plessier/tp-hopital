@@ -1,10 +1,22 @@
 <?php
+$code = null;
+
 
 require_once(dirname(__FILE__).'/../models/Appointment.php');
+session_start();
 
 $title = "Liste des Rendez-vous";
 $error = '';
 
+////////////////////////////////////////////////////// DELETE RDV ///////////////////////////////////////////////////////////////////////////////////
+
+if(!empty($_GET['remove'])){
+    $removeId = intval(trim(filter_input(INPUT_GET, 'remove', FILTER_SANITIZE_NUMBER_INT)));
+    $deleteAppoint = new Appointment("","",$removeId);
+    $code = $deleteAppoint->deleteAppointment();
+}
+
+////////////////////////////////////////////////////// LISTE DES RDV ///////////////////////////////////////////////////////////////////////////////////
 
 $appointments = Appointment::findAllAppointment();
 
@@ -21,6 +33,12 @@ if (is_array($appointments)) {
 }else{
     $error = "wrong";
 }
+
+
+
+
+
+
 
 
 

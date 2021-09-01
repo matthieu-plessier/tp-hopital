@@ -12,6 +12,8 @@ $messageCode = [
     12 => ['type' => 'alert-success', 'msg' => 'Le rendez-vous est enregistré'],
     13 => ['type' => 'alert-success', 'msg' => 'La date n\'est pas au bon format'],
     14 => ['type' => 'alert-success', 'msg' => 'Le rdv est bien supprimé !'],
+    15 => ['type' => 'alert-success', 'msg' => 'Le patient est bien supprimé !'],
+
 ];
 
 // Ici on défini les variables de connection

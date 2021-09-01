@@ -1,8 +1,13 @@
-<h1>Liste des rendez-vous </h1>
-<a class="btn btn-primary" href="/controllers/ajout-rendezvous_ctrl.php" role="button" id="addButton">Ajouter un Rendez-vous</a>
+<h1 class="m-3">Liste des rendez-vous </h1>
+<a class="btn btn-primary m-3" href="/controllers/ajout-rendezvous_ctrl.php" role="button" id="addButton">Ajouter un Rendez-vous</a>
 <?= $error ?>
+<?php 
+    if($code){
+        echo '<div class="alert'.' '.$messageCode[$code]['type'].' ">'.$messageCode[$code]['msg'].'</div>';
+    }
+?>
 <div class="container ">
-    <table class="table">
+    <table class="table m-3">
         <thead>
             <th scope="col">ID</th>
             <th scope="col">Date & heure</th>
@@ -16,6 +21,7 @@
         </thead>
 
         <tbody>
+            
             <?php foreach($appointments as $rdv) : ?>
                 <tr class="table-primary">
                     <td scope="row"><?=$rdv->id ?? '' ?></td>
@@ -25,10 +31,11 @@
                     <td><?=$rdv-> firstname ?? '' ?></td>
                     <td><a href="tel:<?=$rdv->phone ?? '' ?>"><?=$rdv->phone ?? '' ?></a></td>
                     <td><a class="btn btn-primary" href="/controllers/rendezvous_ctrl.php?id=<?=$rdv->id ?>">Voir Rendez-vous</button></td>
-                    <td><img src="https://img.icons8.com/color/48/000000/delete-forever.png"/></td>
+                    <td><a href="/controllers/liste-rendezvous_ctrl.php?remove=<?=$rdv->id ?>"><img src="https://img.icons8.com/color/48/000000/delete-forever.png/"></a></td>
                 </tr>
-            <?php endforeach; ?>
 
+            <?php endforeach; ?>
+            
         </tbody>
     </table>
 </div>

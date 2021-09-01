@@ -40,6 +40,7 @@
                 return false;
             }
         }
+///////////////////////////////////////////////// AJOUT PATIENT ///////////////////////////////////////////////////////////////////////////////////////
         public function addPatient()
         {
             if($this->checkDuplicate($this->_email) == false){
@@ -67,6 +68,7 @@
                     return 2; //Le patient existe déjà
                 }
         }
+//////////////////////////////////////////////////////// LISTE PATIENT ///////////////////////////////////////////////////////////////////////////////////////        
         public static function findAll(){
             // requête sql
             $sql = "SELECT * FROM `patients`";
@@ -87,7 +89,8 @@
             
             
         }
-             // méthode pour voir le profil d'un patient
+////////////////////////////////////////////////////// PROFIL PATIENT ///////////////////////////////////////////
+
     public static function checkPatient($id)
     {
         $sql = "SELECT * FROM `patients` WHERE `id` = :id;";
@@ -107,7 +110,7 @@
         }
 
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////// MISE A JOUR PATIENT//////////////////////////////////////////////////////////////////////////
     public function upDate($id)
     {
         $sql ="UPDATE  `patients` 
@@ -132,4 +135,30 @@
             return false;
         }
     }
+////////////////////////////////////////////////////// DELETE PATIENT & RDV //////////////////////////////////////////////////////////////////////////////////////////
+
+    public function deletePandA($id)
+    {
+        $sql =" DELETE FROM `patients` 
+                WHERE `id`= :id;";
+
+                $req = $this->db->prepare($sql);
+
+                $req->bindValue(':id', $id, PDO::PARAM_STR);
+
+                try {
+                    if ($req->execute())
+                    // retourne les données récup
+                    return 15;
+                } catch (PDOException $ex) {
+                    return false;
+                }
     }
+
+
+
+
+
+
+
+}

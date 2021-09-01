@@ -1,4 +1,4 @@
-<h1>Profil du patient</h1>
+<h1 class="m-3">Profil du patient</h1>
 
 <p>Pour modifier les informations du patient, veuillez remplacer les champs suivants puis valider.</p>
 <?php
@@ -8,10 +8,11 @@
     <strong> Prénom: </strong><?= $resultCheckPatient->firstname ?></p>
 <?php } ?>
 
-<?php if (!$code) {
-
+<?php 
+    if($code){
+        echo '<div class="alert'.' '.$messageCode[$code]['type'].' ">'.$messageCode[$code]['msg'].'</div>';
+    
 ?>
-
 
 <div class="container">
     <form class=" " action="<?= htmlspecialchars($_SERVER['PHP_SELF']).'?id='.$id;?>" method="post">

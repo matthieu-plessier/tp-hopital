@@ -11,9 +11,10 @@
 ///////////////////////////////////////////////// AJOUT RDV///////////////////////////////////////////////////////////////////////////////////////
     
 // méthode magique pour "hydrater"
-    public function __construct($dateHour = "", $idPatients = "")
+    public function __construct($dateHour = "", $idPatients = "", $id="")
 
     {
+    $this->_id=$id;
     $this->_dateHour=$dateHour;
     $this->_idPatients=$idPatients;
     $this->db = Database::getInstance();
@@ -143,25 +144,21 @@ public function userAppointments($id){
 }
 //////////////////////////////////////////////////////////// SUPPRESSION DE RDV //////////////////////////////////////////////////////////////////////////////
 
-public function deleteApointment(){
+public function deleteAppointment(){
 
-    $sql ="DELETE INTO `appointments`
-            (`dateHour`, `idPatients`)
-            VALUES
-            (:dateHour, :idPatients)";
+    $sql ="DELETE FROM `appointments`
+            WHERE `appointments`.`id` = :id";
 
-    $db = Database::getInstance();
     $req = $this->db->prepare($sql);
 
-    $req->bindValue(':dateHour', $this->_dateHour, PDO::PARAM_STR);
-    $req->bindValue(':idPatients', $this->_idPatients, PDO::PARAM_STR);
+    $req->bindValue(':id', $this->_id, PDO::PARAM_STR);
 
 
     try {
         $req->execute();
-        return 12; // RDV annulé
+        return 14; // RDV annulé
     } catch (PDOException $ex) {
         return 404; // Une erreur est survenue
     }
     }
-}
+} 
