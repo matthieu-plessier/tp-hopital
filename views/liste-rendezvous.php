@@ -23,7 +23,7 @@
         <tbody>
             
             <?php foreach($appointments as $rdv) : ?>
-                <tr class="table-primary">
+                <tr class="table-primary align-middle">
                     <td scope="row"><?=$rdv->id ?? '' ?></td>
                     <td><?=$rdv-> dateHour ?? '' ?></td>
                     <td><?=$rdv-> idPatients ?? '' ?></td>

@@ -154,7 +154,27 @@
                     return false;
                 }
     }
+/////////////////////////////////////////////////////////// SEARCH PATIENT ///////////////////////////////////////////////////////////////
 
+    public function searchPatient(){
+
+        $sql =" SELECT * FROM `patients`
+                WHERE `lastname` LIKE  CONCAT('%', :lastname, '%')";
+                
+
+                $req = $this->db->prepare($sql);
+
+                $req->bindValue(':lastname', $this->_lastname, PDO::PARAM_STR);
+                
+
+                try {
+                    if ($req->execute())
+                    // retourne les données récup
+                    return $req->fetchAll() ;
+                } catch (PDOException $ex) {
+                    return 16;
+                }
+    }
 
 
 
