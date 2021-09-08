@@ -1,6 +1,7 @@
 <?php
     require_once(dirname(__FILE__).'/../config/config.php');
     require_once(dirname(__FILE__).'/../utils/db.php');
+
     class Patient {
         
         private $_id;
@@ -176,9 +177,38 @@
                 }
     }
 
+    ///////////////////////////////////////////////////////// PAGINATION ///////////////////////////////////////////////////////
+
+    public function pagination(){
+
+    $sql = "SELECT COUNT(*) AS nbr_patients FROM `patients`;";
+
+    // On prépare la requête
+    $req = $this->db->prepare($sql);
+
+    // On exécute
+    $req->execute();
+
+    // On récupère le nombre d'articles
+    $result = $req->fetch();
+
+    $nbArticles = (int) $result['nb_articles'];
+
+    // On détermine le nombre d'articles par page
+    $parPage = 5;
+
+    // On calcule le nombre de pages total
+    $pages = ceil($nbArticles / $parPage);
+    
+    
+    //Mise en place de la pagination
+    //Maintenant que nous connaissons toutes les informations, 
+    //nous allons pouvoir définir quels articles nous devons afficher en fonction de la page chargée.
+
+    $sql = "SELECT * FROM `articles` ORDER BY `created_at` DESC LIMIT 0, 5;";
 
 
 
-
-
+    }
+    
 }

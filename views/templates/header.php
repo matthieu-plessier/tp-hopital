@@ -33,6 +33,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/controllers/liste-rendezvous_ctrl.php">Liste rendez-vous</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/controllers/ajout-patient-rdv_ctrl.php">Ajout Patient & rendez-vous</a>
+                    </li>
                     
                 </ul>
                 <span class="navbar-text">

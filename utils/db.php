@@ -1,5 +1,6 @@
 <?php
 
+// SINGLETON
 class Database{
 
     private static $_pdo;
